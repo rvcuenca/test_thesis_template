@@ -21,7 +21,7 @@ abstract: |
   `r paste(readLines("_abstract.Rmd"), collapse = "\n  ")`
 site: bookdown::bookdown_site
 documentclass: book
-# logo: source/img/msuiit-logo.png # Uncomment this only after you finalize the ouput
+logo: source/img/msuiit-logo.png # Uncomment this only after you finalize the ouput
 bibliography: 
   - source/bib/book.bib
   - source/bib/packages.bib

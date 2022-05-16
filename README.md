@@ -22,5 +22,5 @@ It is assumed that you have installed
 
 ## Tips
 
-  1. In the `index.Rmd` file, it is preferred that you comment out (using `#`) the `logo` parameter in the YAML header to render the pdf file much faster. You can uncomment this later once you are finally done.
+  1. (Highly-recommended) In the `index.Rmd` file, it is preferred that you comment out (using `#`) the `logo` parameter in the YAML header to render the pdf file much faster. You can uncomment this later once you are finally done.
   2. For the current update of this template, it is recommended that you use RStudio's Viewer when previewing the compiled pdf output. You can do this going to `Tools > Global Options > Sweave > PDF Preview` and choose `RStudio Viewer` in the options of `Preview PDF after complie using`.
