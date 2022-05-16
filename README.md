@@ -5,7 +5,7 @@
 It is assumed that you have installed 
 
  1. the latest version of R and Rstudio
- 2. the latest version of the R package `tintyex`. Otherwise install it using the following R lines.
+ 2. the latest version of the R package `tinytex`. Otherwise install it using the following R lines.
  
   ```r
   install.packages("tinytext")
