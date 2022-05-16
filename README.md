@@ -17,7 +17,7 @@ It is assumed that you have installed
   1. Clone/download the repository.
   2. Click `test_thesis_template.Rproj` redirecting you to your RStudio IDE.
   3. On the Files Pane, click the `index.Rmd` file.
-  4. Build the book tge preview the pdf by pressing `Cntrl + Shift + B` in Windows or `Command + Shift + B` for Mac.
+  4. Build the book to preview the pdf by pressing `Cntrl + Shift + B` in Windows or `Command + Shift + B` for Mac.
   5. Edit/Add Rmd files corresponding to the chapters you want to modify.
 
 ## Tips
