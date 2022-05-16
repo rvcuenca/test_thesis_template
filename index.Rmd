@@ -1,6 +1,6 @@
 ---
 params:
-  title: "On the Creation of the R Markdown Thesis Template for Statistics Students of MSU-IIT"
+  title: "On Creation of the R Markdown Thesis Template for DMS Students of MSU-IIT"
   author: "Rey R. Cuenca"
   program: "Bachelor of Science in Statistics"
   papertype: "Undergraduate Thesis"
@@ -17,11 +17,11 @@ params:
   address: "Iligan City"
   sgsdean: "Dr. Beloved N. SGS-Dean"
   ddate: "August, 2022"
-# logo: source/img/msuiit-logo.png # Uncomment this only after you finalize the ouput
 abstract: |
   `r paste(readLines("_abstract.Rmd"), collapse = "\n  ")`
 site: bookdown::bookdown_site
 documentclass: book
+# logo: source/img/msuiit-logo.png # Uncomment this only after you finalize the ouput
 bibliography: 
   - source/bib/book.bib
   - source/bib/packages.bib
@@ -33,6 +33,10 @@ colorlinks: true
 fontsize: 12pt
 preview: true
 ---
+
+```{r install_packages, include=FALSE}
+source('source/r/install-missing-r-packages.R')
+```
 
 ```{r child="_titlepage.Rmd"}
 ```

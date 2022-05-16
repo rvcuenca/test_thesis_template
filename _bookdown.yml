@@ -1,6 +1,6 @@
 output_dir: "docs"
 book_filename: "my-thesis"
-new_session: false
+new_session: true
 before_chapter_script: "source/r/_common.R"
 # after_chapter_script: "source/r/remove_files.R"
 delete_merged_file: true

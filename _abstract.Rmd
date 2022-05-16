@@ -1,11 +1,6 @@
 # ABSTRACT {-}
 
-```{r}
-plot(rnorm(100))
-```
+This is where my abstract goes followed by the followed by some nonsense text. I have made some changes here `r stringi::stri_rand_lipsum(2)`
+  
 
-
-`r stringi::stri_rand_lipsum(10)`
-
-This is my Abstract [@rmarkdown2020]
-
+another change here

@@ -1,0 +1,159 @@
+\documentclass{source/tex/templates/maththesis}
+\usepackage[
+paperwidth=8.5in,
+paperheight=11in
+]{geometry}
+
+
+%%%%%%%%%%%%%% Rmarkdown Related Changes %%%%%%%%%%%%%%%%%%%%%
+
+% add hyperref package with options from YAML %
+\usepackage[pdfpagelabels]{hyperref}
+% change the default coloring of links to something sensible
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+
+\hypersetup{
+  colorlinks=false,
+  linktocpage=true,
+  linkbordercolor=.,
+  urlbordercolor=.,
+  citebordercolor=.
+}
+
+% pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file,
+% so we add this command to the template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+ 
+% % UL 1 Dec 2018, fix to include code in shaded environments
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+% 
+% %UL set white space before and after code blocks
+% \renewenvironment{Shaded}
+% {
+%   \vspace{}%
+%   \begin{snugshade}%
+% }{%
+%   \end{snugshade}%
+%   \vspace{}%
+% }
+
+
+
+%%%%% BIBLIOGRAPHY SETUP
+% Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
+% If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
+% If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
+% Either way, you'll have to choose and configure an appropriate bibliography format...
+
+% this enables pandoc citations
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% DOCUMENT-DETAILS
+
+% \title{}
+% \author{}
+% \college{}
+
+% \renewcommand{\contentsname}{My nice list of contents}
+% \renewcommand{\listfigurename}{My nice list of figures}
+\renewcommand{\listtablename}{LIST OF TABLES}
+
+\usepackage{transparent}
+\usepackage{eso-pic}
+
+
+
+\begin{document}
+\pagenumbering{roman}\setcounter{page}{1}
+
+%%%%% TITLEPAGE
+
+\hypertarget{dms-statistics-thesis-template}{%
+\section{DMS-Statistics THESIS TEMPLATE}\label{dms-statistics-thesis-template}}
+
+\hypertarget{requirements}{%
+\subsection{Requirements}\label{requirements}}
+
+It is assumed that you have installed
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  the latest version of R and Rstudio
+\item
+  the latest version of the R package \texttt{tintyex}. Otherwise install it using the following R lines.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"tinytext"}\NormalTok{)}
+\NormalTok{tinytex}\SpecialCharTok{::}\FunctionTok{install\_tinytex}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{usage}{%
+\subsection{Usage}\label{usage}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Clone/download the repository.
+\item
+  Click \texttt{test\_thesis\_template.Rproj} redirecting you to your RStudio IDE.
+\item
+  On the Files Pane, click the \texttt{index.Rmd} file.
+\item
+  Build the book by presssing \texttt{Cntrl\ +\ Shift\ +\ B} in Windows
+\end{enumerate}
+
+%%%%% REFERENCES
+
+\end{document}

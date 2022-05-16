@@ -1,5 +1,6 @@
 # INTRODUCTION
 
+I'll make some changes here in the intro. hehe Oh no
 
 ```{r}
 for (k in 1:5) {
@@ -10,7 +11,7 @@ for (k in 1:5) {
 
 $$
  \int_{-\infty}^{\infty} e^{-\frac{1}{2}x^2}\,\text{d}x = \sqrt{2\pi}
-$$
+$$!
 
 ## Subsection 1
 `r stringi::stri_rand_lipsum(5)`
