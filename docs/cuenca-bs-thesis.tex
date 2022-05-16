@@ -1,0 +1,269 @@
+\documentclass{source/tex/templates/maththesis}
+\usepackage[
+paperwidth=8.5in,
+paperheight=11in
+]{geometry}
+
+
+%%%%%%%%%%%%%% Rmarkdown Related Changes %%%%%%%%%%%%%%%%%%%%%
+
+% add hyperref package with options from YAML %
+\usepackage[pdfpagelabels]{hyperref}
+% change the default coloring of links to something sensible
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+
+\hypersetup{
+  colorlinks=false,
+  linktocpage=true,
+  linkbordercolor=.,
+  urlbordercolor=.,
+  citebordercolor=.
+}
+
+% pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file,
+% so we add this command to the template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+ 
+% % UL 1 Dec 2018, fix to include code in shaded environments
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+% 
+% %UL set white space before and after code blocks
+% \renewenvironment{Shaded}
+% {
+%   \vspace{}%
+%   \begin{snugshade}%
+% }{%
+%   \end{snugshade}%
+%   \vspace{}%
+% }
+
+
+
+%%%%% BIBLIOGRAPHY SETUP
+% Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
+% If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
+% If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
+% Either way, you'll have to choose and configure an appropriate bibliography format...
+
+% this enables pandoc citations
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  % \setlength{\parskip}{}
+  % \setlength{\baselineskip}{}
+  \setlength{\parskip}{1mm}
+  \setlength{\baselineskip}{6mm}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% DOCUMENT-DETAILS
+
+% \title{}
+% \author{}
+% \college{}
+
+
+
+
+\begin{document}
+\pagenumbering{roman}\setcounter{page}{1}
+
+%%%%% TITLEPAGE
+
+\chapter*{}
+
+\phantom{xs}
+\vspace{5pt}
+\addcontentsline{toc}{chapter}{TITLE PAGE}
+\thispagestyle{empty}
+\begin{center}
+\large\textbf{ON THE CREATION OF THE R MARKDOWN THESIS TEMPLATE FOR STATISTICS STUDENTS OF MSU-IIT} 
+\end{center}
+
+\vfill
+
+\begin{center}
+AN UNDERGRADUATE THESIS
+\end{center}
+
+\begin{center}
+Presented to 
+
+the Faculty of the 
+
+Department of Mathematics and Statistics
+
+College of Science and Mathematics
+
+Mindanao State University -- Iligan Institute of Technology
+
+Iligan City
+\end{center}
+
+\vfill
+
+\begin{center}
+In Partial Fulfillment
+
+of the Requirements for the Degree
+
+BACHELOR OF SCIENCE IN STATISTICS
+\end{center}
+
+\vfill
+
+\begin{center}
+\textbf{REY R. CUENCA}
+
+AUGUST, 2022
+\end{center}
+
+\vspace{-1in}
+
+\hypertarget{abstract-2}{%
+\chapter*{ABSTRACT}\label{abstract-2}}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=1\linewidth]{index_files/figure-latex/unnamed-chunk-5-1} \end{center}
+
+Lorem ipsum dolor sit amet, posuere ut facilisis accumsan. Ipsum consectetur sed nisl viverra neque luctus, curabitur suspendisse. Nulla et hac malesuada vitae justo suscipit. Volutpat risus hac id pellentesque. Felis ornare, et magna feugiat ultricies quis risus. Accumsan et ac a. Tristique tristique diam eget sed amet leo. Sapien placerat per. Ultricies sed nam velit condimentum ut et in vitae aliquam. Sed fames convallis vestibulum nostra ut at metus. Sed erat faucibus sed nascetur finibus parturient., Sit in nulla, metus tristique quam risus sem purus mi. Proin dignissim vestibulum justo vestibulum nunc nisl. Ultricies non pharetra et neque amet platea ligula ornare. Tristique mattis non mus pellentesque nunc. Fermentum pellentesque auctor, in, potenti sapien vel natoque tellus risus amet laoreet sed. Et bibendum adipiscing fusce luctus. Sed vulputate nibh tellus ridiculus ultrices sociis, convallis dignissim penatibus fusce. Euismod lectus nibh elit nec lectus arcu turpis porttitor fringilla, vestibulum. Elit cras, non molestie, tellus dolor in ut elit, sapien donec quis bibendum. Mus facilisi, a risus in sed lacus, ut. Ad elit nam mi nunc. Nulla vestibulum et conubia. Pharetra ullamcorper, duis dignissim porta et potenti non pellentesque sapien in, purus., Urna eleifend aliquam facilisis tincidunt rutrum convallis ligula ut tincidunt penatibus. Vitae arcu arcu feugiat non, rhoncus mollis, in faucibus. Faucibus sollicitudin eros cubilia morbi suspendisse ultricies. Molestie, dictum fringilla leo eleifend. Eu viverra ut sit eu mauris. Tortor netus suscipit magna vivamus mattis. Ligula non ante a purus mauris, nunc vulputate leo nec. Maecenas nullam ligula amet volutpat rhoncus vitae urna. Mauris malesuada consectetur sagittis sed lacus ac nec iaculis ante libero orci. Lobortis ut eget mi interdum eu, non. Odio nunc donec lacinia fermentum neque. Ornare, natoque in sagittis id justo. Consectetur, sed porttitor, vulputate condimentum id blandit amet. Hendrerit augue eros scelerisque lacus et, dapibus., A consequat libero et sit varius. Tempor, pulvinar porta, porttitor dui dis mi massa, ultrices ligula. Justo mauris, enim cras neque odio molestie ut amet. Commodo inceptos aliquam ut eget mi sem dolor in mi nibh eu mauris nascetur! Pharetra sem nec ex pellentesque a. In tincidunt justo, urna aliquet ex porttitor, ligula neque dui. Aliquam nisl tincidunt vehicula in ligula blandit dapibus non enim efficitur, dolor sapien arcu aliquet. Integer amet libero in tempor dictumst nulla. Elit velit ipsum aptent, sollicitudin hendrerit, sodales cursus, rhoncus nec, at nam et congue. Fames duis libero in dolor in accumsan nunc nibh euismod mollis nisi. Sem felis laoreet vitae purus a nibh et, auctor in per. Ex consequat pellentesque urna velit nulla ullamcorper ut convallis! Dolor vel himenaeos quam egestas per vestibulum., Nullam feugiat cubilia amet inceptos mollis. In odio donec facilisis vestibulum mauris fusce auctor ad. Tortor non nullam quam nec libero, ultricies tellus pellentesque felis. Eu tempor primis placerat natoque. Et, nibh varius felis lacus. Facilisis per, varius, morbi dapibus ac, tortor, praesent consectetur sodales dui orci. Sit sociosqu pellentesque sed nisl eu molestie pellentesque condimentum nam. Nulla velit quisque per nam platea. Pretium, sollicitudin in posuere risus augue aliquam dapibus, tincidunt ac fames quam leo. Nibh sed, lobortis neque netus dui sed et cras, vitae., Ac imperdiet porttitor lacus sociosqu nulla ligula inceptos dapibus ornare, dolor volutpat. Odio, eget fames quis ut, lorem magna purus. Lorem auctor elementum taciti risus ultrices sit ornare bibendum ut dolor pretium, risus. Eros, habitasse aptent vel platea mauris cras sollicitudin a vel egestas. Ante urna sed, ligula maximus luctus at etiam rutrum, in vehicula. Et leo aptent suspendisse varius urna ut, maximus sociis maximus. Volutpat eget eu morbi ligula donec eleifend. Quis libero sit tincidunt nullam a at fringilla. Hac porttitor quisque primis non velit morbi tellus nostra orci ultrices eget, vestibulum. Aptent at amet vivamus odio ipsum netus blandit penatibus odio., Efficitur ante quis velit malesuada proin tincidunt orci, adipiscing ad. Porttitor euismod metus, arcu tincidunt curabitur nibh. Ac nascetur est purus non, faucibus. Sed commodo vestibulum, ut sem ultricies lectus egestas arcu pharetra. Augue vulputate ultricies porttitor eu sed efficitur ut. Lobortis et. Ornare sagittis et maecenas tellus ultrices lectus ipsum lectus ut. Enim suspendisse eros id congue ut quis imperdiet. Luctus taciti amet dui odio et sodales dapibus etiam auctor pellentesque quam. Vestibulum et conubia eros., Rhoncus ullamcorper cubilia velit finibus mus. Et id aenean condimentum, ex, id sapien accumsan. Non nisl faucibus nisl et ad mauris interdum nunc. Feugiat, vivamus nisl eu mi morbi in a ad donec. Dolor in hac feugiat non rhoncus ipsum. Nisl nulla, diam, dui pulvinar nullam purus a iaculis sociosqu senectus sed. Consectetur, sit libero ornare integer, vel sed, dui ac torquent facilisi purus. Ac suspendisse ac nostra, eu dignissim tortor sed! Primis massa vestibulum sit. Condimentum elementum tristique sed nec donec? Nec suspendisse natoque nibh, dui varius ac! Ac enim non imperdiet penatibus fermentum in., Imperdiet est nam, iaculis ac ac non quis, purus vivamus. Ac efficitur metus. Placerat suspendisse luctus. Mauris vel, volutpat sociosqu mauris quam nullam nec ipsum. Augue amet mauris lorem eu amet. Mauris ex. Iaculis elementum vivamus metus., Faucibus sed, dolor scelerisque suscipit cubilia justo ante viverra. Dis, diam nulla eleifend tristique. Magna augue blandit, sem condimentum, ullamcorper, non elit. Condimentum lectus eleifend felis primis morbi turpis lobortis blandit, gravida semper. Semper at, quis eros, malesuada congue velit vivamus? Sapien vivamus libero efficitur est in est taciti. Suspendisse venenatis morbi, dui eu placerat nunc tempor sed lorem commodo. Ligula pretium sapien, sed ultricies ad interdum, eu imperdiet. Volutpat montes tortor id.
+
+This is my Abstract (Xie et al., 2020)
+
+\hypertarget{dedication}{%
+\chapter*{DEDICATION}\label{dedication}}
+\addcontentsline{toc}{chapter}{DEDICATION}
+
+Some lines od dedication
+
+\hypertarget{acknowledgment}{%
+\chapter*{ACKNOWLEDGMENT}\label{acknowledgment}}
+\addcontentsline{toc}{chapter}{ACKNOWLEDGMENT}
+
+Some acknowledgment here.
+
+\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}\setcounter{page}{1}
+
+\hypertarget{introduction}{%
+\chapter{INTRODUCTION}\label{introduction}}
+
+\[
+ \int_{-\infty}^{\infty} e^{-\frac{1}{2}x^2}\,\text{d}x = \sqrt{2\pi}
+\]
+
+\hypertarget{subsection-1}{%
+\section{Subsection 1}\label{subsection-1}}
+
+Lorem ipsum dolor sit amet, mattis, sed etiam turpis sit diam volutpat varius lectus. Mauris mi pulvinar augue diam. Nec phasellus sed congue lorem laoreet. Nostra malesuada curabitur sem sit mi tristique at. Quisque quisque mus, euismod lorem scelerisque lacinia quam nascetur ullamcorper et dolor non! Sed, ac et. Ipsum, nulla pulvinar dignissim, proin, ex ut nibh nunc. Quisque diam accumsan quis. Tempor id dolor maecenas vel. Proin amet odio egestas augue fusce. Convallis ridiculus, risus nec non nunc mattis, vitae faucibus et., Vel id nec mi ut. Dictumst orci nibh aptent libero maximus a aptent phasellus, libero a. In mauris sit facilisis. Tincidunt in, eget mi at augue. At auctor, efficitur ex a. Senectus pulvinar conubia habitasse bibendum, facilisis ut hac conubia. Senectus sapien ac eu sed, primis in. Id et purus eros sit, vulputate elit., Ac et egestas. Varius ac volutpat sit risus faucibus ut. Potenti leo aliquam mauris. Et nulla penatibus sed in porta a. Quisque diam placerat faucibus finibus phasellus, tortor, metus. Cursus elementum congue nisl purus fringilla. Urna aliquet tristique vehicula maximus at pharetra, etiam. Luctus velit, rhoncus vivamus est ut pharetra., Faucibus ornare in, commodo, nunc porttitor blandit quis viverra vel sed natoque. Viverra placerat faucibus mollis imperdiet faucibus et felis elit tempor nulla. Nibh in sed tincidunt turpis mus dictumst, in lectus sollicitudin eu. Lacinia in at sed ornare sed semper. Nunc nisl mauris in blandit nam malesuada felis arcu a gravida vehicula sagittis. In in urna, aenean placerat, ut, quisque ligula, tristique nibh, ornare fusce orci. In malesuada ante dictum. Efficitur ac dis eu praesent condimentum mattis penatibus. Tincidunt rutrum magna libero nam, finibus cum egestas. Sed bibendum sed lectus., Quis dignissim fusce nisi nisl, ultrices ante. Id tellus a amet purus ut felis. Tincidunt turpis, nec integer a, lobortis hac ac libero suscipit. Leo, lacus leo, suspendisse curae in posuere porttitor sed. Dapibus sociis nullam rutrum eros, ut et consectetur eleifend ipsum in. Et augue amet. Vel in sit congue interdum semper bibendum.
+
+\hypertarget{subsection-2}{%
+\section{Subsection 2}\label{subsection-2}}
+
+Lorem ipsum dolor sit amet, lorem blandit magna sociosqu. Nulla, proin urna et ut nunc dictum praesent malesuada nullam tellus sed suspendisse. Morbi metus vitae libero risus, aliquet aliquam. Sed sociosqu, nam semper sit finibus odio non mollis conubia quis. Donec class vestibulum iaculis ridiculus, netus magna taciti sollicitudin dignissim nec imperdiet. Nulla penatibus, felis consectetur, lacus, vitae himenaeos cubilia eu. Nisl risus et ac sagittis aliquam urna nulla, justo neque aliquet. Ut bibendum quisque at et, quam at. Phasellus nullam pretium vel sed., Nunc elit ut malesuada nisl in diam libero eleifend augue fringilla, augue diam mauris ac quam orci. Lorem in sociis quam egestas id enim suscipit ridiculus. Pulvinar nibh lacinia egestas semper in adipiscing est odio. Consectetur montes non metus nulla fringilla nulla ut tempor risus tincidunt ultrices. Volutpat curae efficitur augue vehicula sed torquent eu luctus nascetur enim ut. Vestibulum dapibus ligula nisi, netus sit, mauris tempus purus vestibulum nunc. Imperdiet blandit rutrum suspendisse in rhoncus tempus rutrum et. Auctor ac venenatis suscipit, et sed finibus elit nisl tellus porttitor., In consequat turpis tempus aptent pulvinar congue auctor sed. Tempor donec integer, purus enim, leo, sed porttitor facilisi non finibus. At eu ut. Nunc pellentesque curabitur commodo mauris ut augue purus. Adipiscing nunc aptent vitae orci et at. Sed id arcu, fames conubia vestibulum nec. Posuere nisl tortor lectus luctus lorem. Curae odio sed facilisi parturient at sed orci, lacus sagittis dui hendrerit volutpat eleifend. Odio nullam aenean a fames facilisi pellentesque nostra. Litora, tincidunt, magna ut sapien aliquam sed non non. Efficitur sed sapien vel faucibus pulvinar. Auctor iaculis habitasse volutpat ac metus vestibulum erat blandit accumsan. Nec velit nulla hendrerit dapibus congue., A hac pulvinar ut ligula tempus at proin sociis amet ad blandit. Eget ultrices nec augue maecenas diam eu mauris. Proin tincidunt quis bibendum eleifend ornare hendrerit a vitae, sollicitudin tempor. Nunc facilisi mattis sed vel, quis sed felis arcu venenatis amet. Mauris, penatibus mattis nec ligula ante, ut ut. Interdum varius donec fringilla, fermentum ligula ac porta magna lobortis. Auctor egestas pellentesque ultricies luctus proin etiam et in aenean. Aliquet, nullam placerat, sit nibh pharetra nibh faucibus. Tristique ultrices cubilia purus, et. Et nam lacinia vitae rutrum quam velit bibendum maecenas convallis tempus elementum. Erat lacus maecenas erat. Maecenas mauris conubia condimentum. Curae nisl consectetur ut sit mi maximus, varius. Nisl, ligula fringilla maximus non ante aptent urna eu habitant., Augue sagittis non sed, odio non ad aliquam. Ipsum mauris elementum, luctus justo risus penatibus mus auctor donec quis. Et justo nibh sed praesent. Adipiscing suspendisse magnis ante. Himenaeos gravida enim sed bibendum ut ipsum maecenas magnis orci taciti. Ex proin quis fusce vestibulum ut commodo. Eu nisi mauris vitae arcu nunc tincidunt.
+
+The balbalbala (Xie, 2015)
+
+\hypertarget{preliminary-concepts}{%
+\chapter{PRELIMINARY CONCEPTS}\label{preliminary-concepts}}
+
+\hypertarget{subsection-1-1}{%
+\section{Subsection 1}\label{subsection-1-1}}
+
+Lorem ipsum dolor sit amet, in suscipit sociis class libero aptent sed turpis, habitasse phasellus pharetra. Libero, vitae amet in vivamus, adipiscing. Mauris sit aliquam enim vel augue dapibus hac. Inceptos leo, dictum maecenas eu! Placerat eu in elit nunc. Adipiscing aliquam leo viverra pellentesque sed placerat ex ut. Cursus torquent ante nec odio non metus hendrerit sed pretium. Dolor primis venenatis bibendum. Ut et nunc diam dignissim pulvinar consectetur. Et eget, molestie duis eros diam sed, ridiculus, non porttitor vel at. Cras, nec elit? Nullam donec ultricies mollis tortor sit est dictum amet., Egestas quis potenti, massa hendrerit fusce molestie pellentesque. Venenatis sit nisl sed vulputate interdum tortor. Amet hendrerit, congue. Justo, magna facilisis sed fringilla et vitae ut convallis. Vestibulum posuere sed dis non. Dolor et ante at lacus cubilia, eu nulla praesent himenaeos tempus aliquet adipiscing pharetra. Nibh in ut. Semper sed et a convallis massa. Montes nibh ipsum, purus vitae., Sed amet tortor rhoncus nibh sollicitudin justo scelerisque. Ad semper in efficitur eu posuere tortor tempus et luctus sollicitudin aenean. Ipsum ut semper porttitor odio a, ante integer in phasellus ultricies, habitant nibh sed. Tempor at, nunc euismod, conubia ut. Quam lobortis vivamus nibh nunc. Tempus sed molestie sed vel quam et ipsum. Ullamcorper dui amet sociosqu sociis purus quisque a dui ultricies. Vivamus duis sed vestibulum malesuada, morbi aliquam a montes ut, mauris tempus urna condimentum., Magna ut, fusce adipiscing orci leo ut lobortis commodo facilisi in erat iaculis elit. Maximus bibendum commodo tempus curabitur mauris non, eu bibendum orci augue ac sit. Sed sociis imperdiet diam duis nibh mauris in nisl, ad mus dui sed. Massa tempor, nisl proin auctor, blandit volutpat diam molestie. Malesuada tortor lectus et magna enim at felis. Suspendisse sed metus cum nec nunc et sociis. Mi euismod commodo, suspendisse egestas in fringilla, sed. Vivamus eu cras commodo justo curabitur sed magna turpis. Nec, sed massa posuere pellentesque pellentesque vestibulum sit posuere et sed sed tempor luctus etiam. Ultricies egestas maecenas litora ad id ipsum. Sed viverra at, condimentum., Amet sed tempor diam vel mattis scelerisque tellus a. Eget sodales sed et taciti faucibus orci velit. Vitae integer orci ligula in duis, sodales elit curae. Facilisis, pretium quam, proin, ipsum vestibulum fringilla vulputate auctor posuere sed neque. Conubia adipiscing vitae sed habitasse, nullam tempor montes non non tellus ligula, efficitur in fusce. Non sodales auctor tortor, in class at lobortis quam porta mauris suscipit velit nec, sed. Sagittis, sit. Lacus eu integer cursus eget eu morbi. Tempus ut velit dictumst est nam. Porta purus fringilla. Turpis lacus egestas mattis molestie ultricies.
+
+\hypertarget{subsection-2-1}{%
+\section{Subsection 2}\label{subsection-2-1}}
+
+Lorem ipsum dolor sit amet, in quis ut imperdiet blandit eleifend proin efficitur tincidunt cum. Sodales id quisque felis amet vulputate nulla, lacinia aenean ac lacinia praesent nullam. In donec nisi in proin et ante. Neque vulputate suspendisse sem ut ut est dictumst ac diam. Pharetra, elementum erat facilisi et maximus vestibulum luctus placerat ipsum! Nunc ex non tincidunt tortor parturient in eu. Venenatis arcu odio aliquet, quis consequat imperdiet fusce nec. Enim mauris, condimentum enim eget elementum nascetur. Pulvinar vel ornare non id eu nullam orci. Elit, sit porttitor tincidunt orci lacus ipsum egestas. Amet eleifend sed, faucibus nisl nulla., Sit porta maecenas tincidunt varius et montes, metus feugiat at ut, id. Id in maximus interdum primis, sed mus. Nunc curabitur ad fusce mauris platea eu nunc mauris tincidunt. Eget lobortis sapien lectus ut vel in purus lectus. Commodo ligula iaculis habitasse malesuada ante dui tempor eget ultricies. Mattis iaculis varius sed tempor conubia erat consequat odio. Sit purus in fermentum eros turpis maecenas velit fringilla ante orci? Efficitur ornare lacinia pulvinar nostra. In tortor morbi consequat, lacinia praesent nibh ac non ut erat. Mi morbi sed nunc mi vehicula tincidunt feugiat, sed porttitor at, elementum., Risus at quis facilisi ridiculus, praesent sed eu. Eu amet fringilla vestibulum vitae consequat adipiscing feugiat vitae. Magnis dui dui non nec consectetur dis in ac sed non! Lorem maximus et velit, tortor et consequat nisl efficitur. Viverra at viverra felis ante sed eleifend dictum phasellus elementum malesuada venenatis sed orci. Vitae diam sed in efficitur enim erat et ex. Aenean volutpat nec pellentesque ad maximus magna condimentum ipsum. Nec vitae dis quam consectetur ante lacus id turpis. Ac nibh eu pellentesque, sed massa porttitor eros. Malesuada sed vulputate nec ligula., Magna dignissim quis, vivamus ornare. Interdum in, dictumst, ante semper sed velit habitasse viverra tincidunt, ex nibh in. Nulla sit imperdiet orci penatibus quis, penatibus mattis convallis, ultrices ex aenean. Ut nullam in sed adipiscing ligula rutrum porttitor. Interdum porttitor dui nam nulla. Maximus lobortis in vestibulum class sit ultrices sollicitudin nibh sapien nullam ut diam. Dictum nostra, cubilia nulla odio imperdiet at quisque nulla? Metus nunc aliquam finibus fermentum enim? Eget facilisis mattis ipsum auctor sit amet sed ac bibendum. Dictumst lacinia elementum potenti lacinia vehicula faucibus accumsan habitasse. Sodales orci lectus posuere at platea rutrum., Sed blandit massa molestie vehicula fringilla in. Vulputate eu sed, maximus vel efficitur erat. Vitae sit diam diam felis neque quis, sed non auctor. Condimentum pellentesque eleifend sollicitudin auctor pellentesque in. Accumsan tempus nisi. Sagittis habitasse enim condimentum. Nec, fames pellentesque odio in in varius et sed condimentum, fermentum. Nunc enim dolor tempus, aliquam sit, quam primis. Sapien sed mauris, a dis. Aptent amet libero varius, diam, pharetra dapibus volutpat amet. Molestie ante, est ullamcorper parturient risus consectetur. Fusce et nisi. Justo mattis ut vitae. Dis dis, sapien suscipit nulla. Leo aptent at dapibus curabitur.
+
+\hypertarget{references}{%
+\chapter*{REFERENCES}\label{references}}
+\addcontentsline{toc}{chapter}{REFERENCES}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-xie2015}{}}%
+Xie, Y. (2015). \emph{Dynamic documents with {R} and knitr} (2nd ed.). Chapman; Hall/CRC. \url{http://yihui.org/knitr/}
+
+\leavevmode\vadjust pre{\hypertarget{ref-rmarkdown2020}{}}%
+Xie, Y., Dervieux, C., \& Riederer, E. (2020). \emph{R markdown cookbook}. Chapman; Hall/CRC. \url{https://bookdown.org/yihui/rmarkdown-cookbook}
+
+\end{CSLReferences}
+
+%%%%% REFERENCES
+
+\end{document}

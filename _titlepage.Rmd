@@ -1,0 +1,50 @@
+`\chapter*{}`{=latex}
+
+\phantom{xs}
+\vspace{5pt}
+\addcontentsline{toc}{chapter}{TITLE PAGE}
+\thispagestyle{empty}
+\begin{center}
+\large\textbf{`r toupper(params$title)`} 
+\end{center}
+
+\vfill
+
+
+\begin{center}
+`r paste0(ifelse(stringr::str_detect(params$papertype, "^U"), "AN ", "A ") ,toupper(params$papertype))`
+\end{center}
+
+\begin{center}
+Presented to 
+
+the Faculty of the 
+
+Department of `r params$department`
+
+`r params$college`
+
+`r params$university`
+
+`r params$address`
+\end{center}
+
+\vfill
+
+\begin{center}
+In Partial Fulfillment
+
+of the Requirements for the Degree
+
+`r toupper(params$program)`
+\end{center}
+
+\vfill
+
+\begin{center}
+\textbf{`r toupper(params$author)`}
+
+`r toupper(params$ddate)`
+\end{center}
+
+\vspace{-1in}

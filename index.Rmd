@@ -1,0 +1,53 @@
+---
+params:
+  title: "On the Creation of the R Markdown Thesis Template for Statistics Students of MSU-IIT"
+  author: "Rey R. Cuenca"
+  program: "Bachelor of Science in Statistics"
+  papertype: "Undergraduate Thesis"
+  adviser: "Dr. Beloved N. Adviser"
+  panelone: "Dr. Beloved N. Panel 1"
+  paneltwo: "Dr. Beloved N. Panel 2"
+  # panelthree: "Dr. Beloved N. Panel 3"
+  # panelfour: "Dr. Beloved N. Panel 4"
+  department: "Mathematics and Statistics"
+  deptchair: "Dr. Beloved N. Chairperson"
+  csmdean: "Dr. Beloved N. College-Dean"
+  college: "College of Science and Mathematics"
+  university: "Mindanao State University -- Iligan Institute of Technology"
+  address: "Iligan City"
+  sgsdean: "Dr. Beloved N. SGS-Dean"
+  ddate: "August, 2022"
+# titlepage: true
+abstract: |
+  `r paste(readLines("_abstract.Rmd"), collapse = "\n  ")`
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: 
+  - source/bib/book.bib
+  - source/bib/packages.bib
+description: |
+  Undergraduate Thesis of Rey Cuenca
+biblio-style: apalike
+csl: source/bibstyle/apa-7th.csl
+colorlinks: true
+fontsize: 12pt
+---
+
+```{r child="_titlepage.Rmd"}
+```
+
+```{r child="_abstract.Rmd"}
+```
+
+```{r child="_dedication.Rmd"}
+```
+
+```{r child="_acknowledgment.Rmd"}
+```
+
+`\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}`{=latex}
+`\tableofcontents`{=latex}
+
+`\newpage`{=latex}
+`\pagenumbering{arabic}\setcounter{page}{1}`{=latex}
+

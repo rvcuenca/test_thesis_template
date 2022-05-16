@@ -1,0 +1,163 @@
+\documentclass{source/tex/templates/maththesis}
+\usepackage[
+paperwidth=8.5in,
+paperheight=11in
+]{geometry}
+
+
+%%%%%%%%%%%%%% Rmarkdown Related Changes %%%%%%%%%%%%%%%%%%%%%
+
+% add hyperref package with options from YAML %
+\usepackage[pdfpagelabels]{hyperref}
+% change the default coloring of links to something sensible
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+$if(linkcolor-rgb)$
+\definecolor{mylinkcolor}{RGB}{$linkcolor-rgb$}
+$endif$
+$if(urlcolor-rgb)$
+\definecolor{myurlcolor}{RGB}{$urlcolor-rgb$}
+$endif$
+$if(citecolor-rgb)$
+\definecolor{mycitecolor}{RGB}{$citecolor-rgb$}
+$endif$
+
+$if(colored-not-bordered-links)$
+\hypersetup{
+  hidelinks,
+  colorlinks,
+  linktocpage=$if(toc-link-page-numbers)$$toc-link-page-numbers$$else$false$endif$,
+  linkcolor=$if(linkcolor-rgb)$mylinkcolor$else$.$endif$,
+  urlcolor=$if(urlcolor-rgb)$myurlcolor$else$.$endif$,
+  citecolor=$if(citecolor-rgb)$mycitecolor$else$.$endif$
+}
+
+$else$
+\hypersetup{
+  colorlinks=false,
+  linktocpage=$if(link-toc-page)$$link-toc-page$$else$true$endif$,
+  linkbordercolor=$if(linkcolor-rgb)$mylinkcolor$else$.$endif$,
+  urlbordercolor=$if(urlcolor-rgb)$myurlcolor$else$.$endif$,
+  citebordercolor=$if(citecolor-rgb)$mycitecolor$else$.$endif$
+}
+$endif$
+
+% pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file,
+% so we add this command to the template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+ 
+% % UL 1 Dec 2018, fix to include code in shaded environments
+$if(highlighting-macros)$
+$highlighting-macros$
+% 
+% %UL set white space before and after code blocks
+% \renewenvironment{Shaded}
+% {
+%   \vspace{$space-before-code-block$}%
+%   \begin{snugshade}%
+% }{%
+%   \end{snugshade}%
+%   \vspace{$space-after-code-block$}%
+% }
+$endif$
+
+
+
+%%%%% BIBLIOGRAPHY SETUP
+% Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
+% If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
+% If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
+% Either way, you'll have to choose and configure an appropriate bibliography format...
+
+% this enables pandoc citations
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  % \setlength{\parskip}{$refs-space-between-entries$}
+  % \setlength{\baselineskip}{$refs-line-spacing$}
+  \setlength{\parskip}{1mm}
+  \setlength{\baselineskip}{6mm}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$if(use-biblatex)$
+\usepackage[$bib-latex-options$]{biblatex}
+
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+
+% This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
+\renewcommand*{\bibfont}{\raggedright\small}
+
+$endif$
+
+$if(use-natbib)$
+\usepackage{natbib}
+\setcitestyle{$natbib-citation-style$}
+\bibliographystyle{$natbib-bibliography-style$}
+\addto\captionsenglish{%
+  \renewcommand{\bibname}{}
+  \renewcommand{\bibsection}{}
+}
+
+% This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
+\renewcommand*{\bibfont}{\raggedright\small}
+
+$endif$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% DOCUMENT-DETAILS
+
+% \title{$title$}
+% \author{$author$}
+% \college{$college$}
+
+
+
+
+\begin{document}
+\pagenumbering{roman}\setcounter{page}{1}
+
+%%%%% TITLEPAGE
+
+${body}
+
+%%%%% REFERENCES
+$if(use-biblatex)$
+\setlength{\baselineskip}{0pt} % JEM: Single-space References
+
+% we are setting the title for the references section in front-and-back-matter/99-references_heading.Rmd
+{\renewcommand*\MakeUppercase[1]{#1}%
+\printbibliography[heading=none]}
+
+$endif$
+
+$if(use-natbib)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+\end{document}
+

@@ -1,0 +1,18 @@
+# INTRODUCTION
+
+$$
+ \int_{-\infty}^{\infty} e^{-\frac{1}{2}x^2}\,\text{d}x = \sqrt{2\pi}
+$$
+
+## Subsection 1
+`r stringi::stri_rand_lipsum(5)`
+
+## Subsection 2
+`r stringi::stri_rand_lipsum(5)`
+
+
+
+The balbalbala [@xie2015]
+
+
+

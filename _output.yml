@@ -1,0 +1,3 @@
+bookdown::pdf_book:
+  template: "source/tex/templates/thesis.tex"
+  keep_tex: true
