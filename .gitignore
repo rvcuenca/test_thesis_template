@@ -2,7 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-/_bookdown_files
-docs/
-docs
-.rds
+*.rds
+_bookdown_files
+docs/*
+!docs/my-thesis.pdf

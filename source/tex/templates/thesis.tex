@@ -136,10 +136,30 @@ $endif$
 % \author{$author$}
 % \college{$college$}
 
+% \renewcommand{\contentsname}{My nice list of contents}
+% \renewcommand{\listfigurename}{My nice list of figures}
+\renewcommand{\listtablename}{LIST OF TABLES}
 
+% \usepackage{transpar  ent}
+\usepackage{eso-pic}
+
+${if(logo)}
+\newcommand\BackgroundPic{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+{\transparent{0.05}\includegraphics[width=0.7\paperwidth]{${logo}}}%
+% {\includegraphics[width=0.7\paperwidth]{${logo}}}%
+\vfill
+}}}
+${endif}
 
 
 \begin{document}
+${if(logo)}
+\AddToShipoutPicture*{\BackgroundPic}
+${endif}
 \pagenumbering{roman}\setcounter{page}{1}
 
 %%%%% TITLEPAGE
@@ -153,6 +173,7 @@ $if(use-biblatex)$
 % we are setting the title for the references section in front-and-back-matter/99-references_heading.Rmd
 {\renewcommand*\MakeUppercase[1]{#1}%
 \printbibliography[heading=none]}
+
 
 $endif$
 

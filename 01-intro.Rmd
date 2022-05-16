@@ -1,5 +1,13 @@
 # INTRODUCTION
 
+
+```{r}
+for (k in 1:5) {
+  print (k + 1)
+}
+```
+
+
 $$
  \int_{-\infty}^{\infty} e^{-\frac{1}{2}x^2}\,\text{d}x = \sqrt{2\pi}
 $$
@@ -14,5 +22,10 @@ $$
 
 The balbalbala [@xie2015]
 
+```{r}
+for (k in 1:5) {
+  print (k)
+}
+```
 
 

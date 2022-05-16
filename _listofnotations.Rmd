@@ -1,7 +1,12 @@
-\>$G$ \>graph
+# LIST OF NOTATIONS {-}
 
-\>1-D, 2-D \>One- or two-dimensional, referring **in this thesis** to spatial dimensions in an image.
 
-\>Otter \>One of the finest of water mammals.
-
-\>Hedgehog \>Quite a nice prickly friend.
+::: {.tabbing data-latex=''}
+```{=latex}
+\hspace{0.25in} \={\bf Notation} \hspace{0.5in}\={\bf Description}\\ 
+\>$\mathbb{R}$ \>the set of real numbers \\
+\>$\mathbb{Z}$ \>the set of integers \\
+\>$\mathbb{P}(\cdot)$ \>the probability function \\
+\>$f_X(x)$ \>the probability distribution function of a random variable $X$ \\
+```
+:::

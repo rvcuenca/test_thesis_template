@@ -17,7 +17,7 @@ params:
   address: "Iligan City"
   sgsdean: "Dr. Beloved N. SGS-Dean"
   ddate: "August, 2022"
-# titlepage: true
+# logo: source/img/msuiit-logo.png # Uncomment this only after you finalize the ouput
 abstract: |
   `r paste(readLines("_abstract.Rmd"), collapse = "\n  ")`
 site: bookdown::bookdown_site
@@ -31,6 +31,7 @@ biblio-style: apalike
 csl: source/bibstyle/apa-7th.csl
 colorlinks: true
 fontsize: 12pt
+preview: true
 ---
 
 ```{r child="_titlepage.Rmd"}
@@ -45,9 +46,18 @@ fontsize: 12pt
 ```{r child="_acknowledgment.Rmd"}
 ```
 
-`\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}`{=latex}
 `\tableofcontents`{=latex}
+`\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}`{=latex}
 
 `\newpage`{=latex}
 `\pagenumbering{arabic}\setcounter{page}{1}`{=latex}
+
+```{r child="_listofnotations.Rmd"}
+```
+
+`\listoffigures\newpage`{=latex}
+`\addcontentsline{toc}{chapter}{LIST OF FIGURES}`{=latex}
+
+`\listoftables\newpage`{=latex}
+`\addcontentsline{toc}{chapter}{LIST OF TABLES}`{=latex}
 

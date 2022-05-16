@@ -1,6 +1,6 @@
 output_dir: "docs"
-book_filename: "cuenca-bs-thesis"
-new_session: true
+book_filename: "my-thesis"
+new_session: false
 before_chapter_script: "source/r/_common.R"
 # after_chapter_script: "source/r/remove_files.R"
 delete_merged_file: true
