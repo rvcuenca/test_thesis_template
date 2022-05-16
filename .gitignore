@@ -6,3 +6,4 @@
 _bookdown_files
 docs/*
 !docs/my-thesis.pdf
+!docs/my-thesis.tex
