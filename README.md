@@ -8,7 +8,7 @@ It is assumed that you have installed
  2. the latest version of the R package `tinytex`. Otherwise install it using the following R lines.
  
   ```r
-  install.packages("tinytext")
+  install.packages("tinytex")
   tinytex::install_tinytex()
   ```
 
