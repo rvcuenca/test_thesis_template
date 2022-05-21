@@ -30,3 +30,16 @@ for (k in 1:5) {
 ```
 
 
+
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+mtcars %>% 
+  "["(1:5,1:4) %>% 
+  knitr::kable(., booktabs=TRUE)
+```
+
