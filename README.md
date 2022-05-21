@@ -1,4 +1,4 @@
-# DMS-Statistics THESIS TEMPLATE
+# DMS THESIS TEMPLATE
 
 ## Requirements
 
